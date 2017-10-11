@@ -184,33 +184,10 @@ The last vowel counted was u</code></pre>
 <h2 id="from-1-to-n"><span class="glyphicon glyphicon-pencil"></span>From 1 to N</h2>
 </div>
 <div class="panel-body">
-<p>Python has a built-in function called <code>range</code> that creates a list of numbers: <code>range(3)</code> produces <code>[0, 1, 2]</code> (thus starting at <code>0</code> if only one parameter is supplied), whilst <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>. By default, <code>range</code> increments the number by one each time. If we specify three parameters, e.g. <code>range(3, 10, 3)</code>, the third parameter indicates how much to increase the number by each time, so we get <code>[3, 6, 9]</code>. Using <code>range</code>, write a loop to print the first 3 natural numbers:</p>
+<p>Python has a built-in function called <code>range</code> that creates a list of numbers: <code>range(3)</code> produces <code>[0, 1, 2]</code>, <code>range(2, 5)</code> produces <code>[2, 3, 4]</code>. Using <code>range</code>, write a loop to print the first 3 natural numbers:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="dv">1</span>
 <span class="dv">2</span>
 <span class="dv">3</span></code></pre></div>
-<blockquote>
-<h2 id="solution" class="solution">Solution</h2>
-<pre><code>for i in range(1, 4):
-   print(i)</code></pre>
-</blockquote>
-</div>
-</section>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="turn-a-string-into-a-list"><span class="glyphicon glyphicon-pencil"></span>Turn a String Into a List</h2>
-</div>
-<div class="panel-body">
-<p>Use a for-loop to convert the string “hello” into a list of letters:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">[<span class="st">&quot;h&quot;</span>, <span class="st">&quot;e&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;l&quot;</span>, <span class="st">&quot;o&quot;</span>]</code></pre></div>
-<p>Hint: You can create an empty list like this:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">my_list <span class="op">=</span> []</code></pre></div>
-<blockquote>
-<h2 id="solution-1" class="solution">Solution</h2>
-<pre><code>my_list = []
-for char in &quot;hello&quot;:
-    my_list.append(char)
-print(my_list)</code></pre>
-</blockquote>
 </div>
 </section>
 <section class="challenge panel panel-success">
@@ -238,7 +215,7 @@ print(my_list)</code></pre>
       <div class="footer">
         This work is derived from prior works that are Copyright © <a href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
-        <a class="label swc-blue-bg" href="https://github.com/Southampton-RSG/2017-08-01-southampton-swc">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/Southampton-RSG/2016-08-31-Southampton">Source</a>
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->

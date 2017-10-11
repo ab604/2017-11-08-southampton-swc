@@ -34,8 +34,7 @@ Now this wouldn't work as it is - we can't just apply this formula directly to
 `data[3]` since it's a string. We need to convert it to a number first. To be 
 specific, a floating point number.
 
-Fortunately, Python has some built-in functions to do these `type` conversions
-(*see `climate_analysis-5.py`*):
+Fortunately, Python has some built-in functions to do these `type` conversions:
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')
@@ -51,7 +50,7 @@ for line in climate_data:
         fahr = float(data[3])
 
         # apply standard Fahrenheit to Celsius formula
-        celsius = ((fahr - 32) * (5/9))
+        celsius = ((fahr - 32) * (5/9)) 
 
         print('Max temperature in Celsius', celsius)
 ~~~
@@ -77,26 +76,11 @@ Max temperature in Celsius 16.33888888888889
 
 ### Modularising conversion code into a function
 
-Whilst this is a simple calculation, there are many things we may want to do 
-that are more complex. What is essentially a single task may require a number of 
-lines of code to accomplish it, and with many of these our code could become 
-quite messy. And if we'd like to reuse that code elsewhere, we'd have to copy
-it.
+Whilst this is a simple calculation, there are many things we may want to do that are more complex. What is essentially a single task may require a number of lines of code to accomplish it, and with many of these our code could become quite messy.
 
-Duplicating portions of code can lead to a host of problems with
-modifying our code in the future, aside from making the code more
-lengthy and unreadable. We'd have to update all our copies if we
-wanted to update how we accomplished that task, which can introduce errors.
-And if errors already exist in our original code, we would have to correct all
-copies, which would become a code maintenance nightmare.
-
-We'd ideally like a way to package our code succinctly, so we only need to 
-change it in one place, and so that it is easier to reuse.
-Python provides for this by letting us define things called 'functions' -
-a shorthand way of re-executing pieces of code.
-
-So going back to our climate code, we can modularise our temperature
-conversion code into a function (*see `climate_analysis-6.py`*):
+We'd also like a way to package our code so that it is easier to reuse,
+and Python provides for this by letting us define things called 'functions' -
+a shorthand way of re-executing longer pieces of code.
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')
@@ -133,29 +117,6 @@ the values we pass to it are assigned to those variables
 so that we can use them inside the function.
 Inside the function,
 we use a [return statement](../../reference.html#return-statement) to send a result back to whoever asked for it.
-
-> ## Combining Strings {.challenge}
->
-> "Adding" two strings produces their concatenation:
-> `'a' + 'b'` is `'ab'`.
-> Write a short function called `fence` that takes two parameters called 
-> `original` and `wrapper` and returns a new string that has the wrapper
-> character at the beginning and end of the original.
-> A call to your function should look like this:
->
-> ~~~ {.python}
-> print(fence('name', '*'))
-> ~~~
->
-> ~~~ {.output}
-> *name*
-> ~~~
->
-> > ## Solution {.solution}
-> > ~~~
-> > def fence(original, wrapper):
-> >     return wrapper + original + wrapper
-> > ~~~
 
 > ## How large should functions be? {.callout}
 > 
@@ -213,37 +174,38 @@ And when we run it again --- which we most definitely should, to make sure it's 
 > 1. 20
 > 2. 80
 > 3. 0
->
-> > ## Solution {.solution}
-> > 3 - the f and k variables defined and used within the function
-> > do not interfere with those defined outside of the function.
-> >
-> > This is really useful, since it means we don't have to worry about
-> > conflicts with variable names that are defined outside of our function
-> > that may cause it to behave incorrectly. This is known as variable scoping.
+> 
+> This is really useful, since it means we don't have to worry about
+> conflicts with variable names that are defined outside of our function
+> that may cause it to behave incorrectly.
 
-> ## Does the sum of a list equal a given value? {.challenge}
+> ## Combining strings {.challenge}
 >
-> Write a function to take a list of numbers and another value, and return
-> whether or not the sum of the list of numbers is equal to that value.
+> "Adding" two strings produces their concatenation:
+> `'a' + 'b'` is `'ab'`.
+> Write a function called `fence` that takes two parameters called `original` and `wrapper`
+> and returns a new string that has the wrapper character at the beginning and end of the original.
+> A call to your function should look like this:
 >
-> Following the function definition, a call to your function should look like this:
+> ~~~ {.python}
+> print(fence('name', '*'))
+> *name*
+> ~~~
+
+> ## Palindrome String check {.challenge}
+>
+> A "Palindrome" is a word, phrase, number, or other sequence of characters which reads the same backward or forward.
+>Write a function (any name of your choice) that takes `input_string` as a parameter
+>and returns either `True` or `False` based on whether the input string is a palindrome or not respectively. 
+>Try to make it case insensitive.  
+>Following the function definition, a call to your function should look like this:
 >
 > ~~~{.python}
-> is_sum_equal([1,2,3], 6))
-> True
-> is_sum_equal([2,4,6], 100)
+> is_palindrome("hello")
 > False
+> is_palindrome("Deed")
+> True
 > ~~~
-> > ## Solution {.solution}
-> > ~~~
-> > def is_sum_equal(number_list, sum_value):
-> >     count = 0
-> >     for number in number_list:
-> >         count = count + number
-> >
-> >     return count == sum_value
-> > ~~~
 
 ## Performing more temperature conversions
 
@@ -269,7 +231,7 @@ def fahr_to_kelvin(fahr):
 
 Which we insert after the `fahr_to_celsius` function (since our new function
 needs to call that one). We can then amend our code to also call that new
-function and output the result. Our code then becomes (*see `climate_analysis-7.py`*):
+function and output the result. Our code then becomes:
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')
@@ -329,7 +291,7 @@ documentation of those functions!
 The usual way to put documentation in software is to add comments, as
 we've already seen. But when describing functions, there's a better way.
 If the first thing in a function is a string that isn't assigned to a variable,
-that string is attached to the function as its documentation (*see `temp_conversion.py`*):
+that string is attached to the function as its documentation:
 
 ~~~ {.python}
 """A library to perform temperature conversions"""
@@ -406,7 +368,7 @@ FUNCTIONS
         fahr -- the temperature in Fahrenheit
 
 FILE
-    /Users/user/Projects/RSG/Training/2017-08-01-southampton-swc/novice/python/code/temp_conversion.py
+    /Users/user/Projects/RSG/Training/2016-08-31-Southampton/novice/python/code/temp_conversion.py
 ~~~
 
 Here, note we've used the term `library` in the code documentation. This
@@ -437,7 +399,7 @@ fahr_to_celsius(fahr)
 ~~~
 
 And then we need to `import` that function from our module into our script, so 
-we can use it (*see `climate_analysis-8.py`*).
+we can use it.
 
 ~~~ {.python}
 import temp_conversion
@@ -465,10 +427,3 @@ function, we need to prefix the function with its `temp_conversion` module name.
 
 Again, the results should be the same as before.
 
-> ## Readable Code {.challenge}
->
-> Revise a function you wrote for one of the previous exercises to try to make
-> the code more readable. Then, collaborate with one of your neighbors
-> to critique each other's functions and discuss how your function 
-> implementations
-> could be further improved to make them more readable.

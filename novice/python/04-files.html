@@ -45,7 +45,7 @@
 <p>We’ll start out by looking at how to read the data file and print its contents in a script, and then modify our script to perform some conversions and output that. Along the way, we’ll see how we can make our code more understandable to others (as well as ourselves, when we might come back to it at a later date).</p>
 <!-- ** Mention CSV specific library -->
 <h3 id="printing-out-the-contents-of-a-data-file">Printing out the contents of a data file</h3>
-<p>We first need to be able to read in our data from the <code>sc_climate_data_10.csv</code> file, and using a loop, print out each line. Let’s write another script called <code>climate_analysis.py</code>, and enter the following (<em>see <code>climate_analysis-1.py</code></em>):</p>
+<p>We first need to be able to read in our data from the <code>sc_climate_data_10.csv</code> file, and using a loop, print out each line. Let’s write another script called <code>climate_analysis.py</code>, and enter the following:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
 
 <span class="cf">for</span> line <span class="op">in</span> climate_data:
@@ -92,7 +92,7 @@
 <p>So, in our example, <code>line</code> is a String object, an instance of a String class. And that String class has a defined method called <code>rstrip()</code>, which removes the trailing newline. There are many other String methods which are incredibly useful!</p>
 </div>
 </aside>
-<p>So, let’s try that out (<em>see <code>climate_analysis-2.py</code></em>):</p>
+<p>So, let’s try that out:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
 
 <span class="cf">for</span> line <span class="op">in</span> climate_data:
@@ -111,12 +111,12 @@
 299196.8188,972890.0521,48.07,61.41,0.78</code></pre>
 <p>Much better!</p>
 <h3 id="selecting-and-printing-out-only-part-of-the-data">Selecting and printing out only part of the data</h3>
-<p>But we’re not being very discriminating with our data, we’re just blindly printing out everything. Let’s assume we need to process the individual column that represents the maximum temperature for July, the 4th one, how do we extract it from the line of data?</p>
+<p>But we’re not being very discriminating with our data, we’re just blindly printing out everything. Since we need to process the individual column that represents the maximum temperature for July, the 4th one, how do we extract it from the line of data?</p>
 <p>As luck (or more likely, good design) would have it, there’s a handy string method called <code>split()</code> which can separate all the columns into a list.</p>
 <p>We’ve seen how we can trim trailing newlines from strings with <code>rstrip()</code> acting on a string object. Well, we use <code>split()</code> in exactly the same way:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">    data <span class="op">=</span> line.split(<span class="st">&#39;,&#39;</span>)</code></pre></div>
 <p>Although in this case, we’re capturing the returned list from <code>split()</code> into a variable called <code>data</code>. We can access elements in that list as before.</p>
-<p>So, let’s change our code accordingly (<em>see <code>climate_analysis-3.py</code></em>):</p>
+<p>So, let’s change our code accordingly:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
 
 <span class="cf">for</span> line <span class="op">in</span> climate_data:
@@ -154,7 +154,7 @@ Max temperature 61.41</code></pre>
       <div class="footer">
         This work is derived from prior works that are Copyright © <a href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
-        <a class="label swc-blue-bg" href="https://github.com/Southampton-RSG/2017-08-01-southampton-swc">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/Southampton-RSG/2016-08-31-Southampton">Source</a>
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->

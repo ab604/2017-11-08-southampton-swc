@@ -49,7 +49,7 @@
 <p>Let’s look at adding a feature to our code to perform a conversion from Fahrenheit to Celsius on the temperature data we are looking at:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">celsius <span class="op">=</span> ((data[<span class="dv">3</span>] <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>))</code></pre></div>
 <p>Now this wouldn’t work as it is - we can’t just apply this formula directly to <code>data[3]</code> since it’s a string. We need to convert it to a number first. To be specific, a floating point number.</p>
-<p>Fortunately, Python has some built-in functions to do these <code>type</code> conversions (<em>see <code>climate_analysis-5.py</code></em>):</p>
+<p>Fortunately, Python has some built-in functions to do these <code>type</code> conversions:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
 
 <span class="cf">for</span> line <span class="op">in</span> climate_data:
@@ -63,7 +63,7 @@
         fahr <span class="op">=</span> <span class="bu">float</span>(data[<span class="dv">3</span>])
 
         <span class="co"># apply standard Fahrenheit to Celsius formula</span>
-        celsius <span class="op">=</span> ((fahr <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>))
+        celsius <span class="op">=</span> ((fahr <span class="op">-</span> <span class="dv">32</span>) <span class="op">*</span> (<span class="dv">5</span><span class="op">/</span><span class="dv">9</span>)) 
 
         <span class="bu">print</span>(<span class="st">&#39;Max temperature in Celsius&#39;</span>, celsius)</code></pre></div>
 <p>So we first convert our <code>data[3]</code> value to a floating point number using <code>float()</code>, then we are free to use it in our conversion formula. Depending on the structure of your own data, you may find you end up doing this a lot!</p>
@@ -79,10 +79,8 @@ Max temperature in Celsius 16.33888888888889
 Max temperature in Celsius 16.261111111111113
 Max temperature in Celsius 16.33888888888889</code></pre>
 <h3 id="modularising-conversion-code-into-a-function">Modularising conversion code into a function</h3>
-<p>Whilst this is a simple calculation, there are many things we may want to do that are more complex. What is essentially a single task may require a number of lines of code to accomplish it, and with many of these our code could become quite messy. And if we’d like to reuse that code elsewhere, we’d have to copy it.</p>
-<p>Duplicating portions of code can lead to a host of problems with modifying our code in the future, aside from making the code more lengthy and unreadable. We’d have to update all our copies if we wanted to update how we accomplished that task, which can introduce errors. And if errors already exist in our original code, we would have to correct all copies, which would become a code maintenance nightmare.</p>
-<p>We’d ideally like a way to package our code succinctly, so we only need to change it in one place, and so that it is easier to reuse. Python provides for this by letting us define things called ‘functions’ - a shorthand way of re-executing pieces of code.</p>
-<p>So going back to our climate code, we can modularise our temperature conversion code into a function (<em>see <code>climate_analysis-6.py</code></em>):</p>
+<p>Whilst this is a simple calculation, there are many things we may want to do that are more complex. What is essentially a single task may require a number of lines of code to accomplish it, and with many of these our code could become quite messy.</p>
+<p>We’d also like a way to package our code so that it is easier to reuse, and Python provides for this by letting us define things called ‘functions’ - a shorthand way of re-executing longer pieces of code.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
 
 <span class="kw">def</span> fahr_to_celsius(fahr):
@@ -105,21 +103,6 @@ Max temperature in Celsius 16.33888888888889</code></pre>
         <span class="bu">print</span>(<span class="st">&#39;Max temperature in Celsius&#39;</span>, celsius)</code></pre></div>
 <p>The definition opens with the word <code>def</code>, which is followed by the name of the function and a parenthesized list of parameter names. The <a href="../../reference.html#function-body">body</a> of the function — the statements that are executed when it runs — is indented below the definition line, typically by four spaces.</p>
 <p>When we call the function, the values we pass to it are assigned to those variables so that we can use them inside the function. Inside the function, we use a <a href="../../reference.html#return-statement">return statement</a> to send a result back to whoever asked for it.</p>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="combining-strings"><span class="glyphicon glyphicon-pencil"></span>Combining Strings</h2>
-</div>
-<div class="panel-body">
-<p>“Adding” two strings produces their concatenation: <code>'a' + 'b'</code> is <code>'ab'</code>. Write a short function called <code>fence</code> that takes two parameters called <code>original</code> and <code>wrapper</code> and returns a new string that has the wrapper character at the beginning and end of the original. A call to your function should look like this:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(fence(<span class="st">&#39;name&#39;</span>, <span class="st">&#39;*&#39;</span>))</code></pre></div>
-<pre class="output"><code>*name*</code></pre>
-<blockquote>
-<h2 id="solution" class="solution">Solution</h2>
-<pre><code>def fence(original, wrapper):
-    return wrapper + original + wrapper</code></pre>
-</blockquote>
-</div>
-</section>
 <aside class="callout panel panel-info">
 <div class="panel-heading">
 <h2 id="how-large-should-functions-be"><span class="glyphicon glyphicon-pushpin"></span>How large should functions be?</h2>
@@ -159,33 +142,30 @@ multiply_by_10(<span class="dv">8</span>)
 <li>80</li>
 <li>0</li>
 </ol>
-<blockquote>
-<h2 id="solution-1" class="solution">Solution</h2>
-<p>3 - the f and k variables defined and used within the function do not interfere with those defined outside of the function.</p>
-<p>This is really useful, since it means we don’t have to worry about conflicts with variable names that are defined outside of our function that may cause it to behave incorrectly. This is known as variable scoping.</p>
-</blockquote>
+<p>This is really useful, since it means we don’t have to worry about conflicts with variable names that are defined outside of our function that may cause it to behave incorrectly.</p>
 </div>
 </section>
 <section class="challenge panel panel-success">
 <div class="panel-heading">
-<h2 id="does-the-sum-of-a-list-equal-a-given-value"><span class="glyphicon glyphicon-pencil"></span>Does the sum of a list equal a given value?</h2>
+<h2 id="combining-strings"><span class="glyphicon glyphicon-pencil"></span>Combining strings</h2>
 </div>
 <div class="panel-body">
-<p>Write a function to take a list of numbers and another value, and return whether or not the sum of the list of numbers is equal to that value.</p>
-<p>Following the function definition, a call to your function should look like this:</p>
-<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">is_sum_equal([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], <span class="dv">6</span>))
-<span class="va">True</span>
-is_sum_equal([<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">6</span>], <span class="dv">100</span>)
-<span class="va">False</span></code></pre></div>
-<blockquote>
-<h2 id="solution-2" class="solution">Solution</h2>
-<pre><code>def is_sum_equal(number_list, sum_value):
-    count = 0
-    for number in number_list:
-        count = count + number
-
-    return count == sum_value</code></pre>
-</blockquote>
+<p>“Adding” two strings produces their concatenation: <code>'a' + 'b'</code> is <code>'ab'</code>. Write a function called <code>fence</code> that takes two parameters called <code>original</code> and <code>wrapper</code> and returns a new string that has the wrapper character at the beginning and end of the original. A call to your function should look like this:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="bu">print</span>(fence(<span class="st">&#39;name&#39;</span>, <span class="st">&#39;*&#39;</span>))
+<span class="op">*</span>name<span class="op">*</span></code></pre></div>
+</div>
+</section>
+<section class="challenge panel panel-success">
+<div class="panel-heading">
+<h2 id="palindrome-string-check"><span class="glyphicon glyphicon-pencil"></span>Palindrome String check</h2>
+</div>
+<div class="panel-body">
+<p>A “Palindrome” is a word, phrase, number, or other sequence of characters which reads the same backward or forward. Write a function (any name of your choice) that takes <code>input_string</code> as a parameter and returns either <code>True</code> or <code>False</code> based on whether the input string is a palindrome or not respectively. Try to make it case insensitive.<br />
+Following the function definition, a call to your function should look like this:</p>
+<div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">is_palindrome(<span class="st">&quot;hello&quot;</span>)
+<span class="va">False</span>
+is_palindrome(<span class="st">&quot;Deed&quot;</span>)
+<span class="va">True</span></code></pre></div>
 </div>
 </section>
 <h2 id="performing-more-temperature-conversions">Performing more temperature conversions</h2>
@@ -196,7 +176,7 @@ is_sum_equal([<span class="dv">2</span>,<span class="dv">4</span>,<span class="d
     <span class="co"># apply standard Fahrenheit to Kelvin formula</span>
     kelvin <span class="op">=</span> fahr_to_celsius(fahr) <span class="op">+</span> <span class="fl">273.15</span>
     <span class="cf">return</span> kelvin</code></pre></div>
-<p>Which we insert after the <code>fahr_to_celsius</code> function (since our new function needs to call that one). We can then amend our code to also call that new function and output the result. Our code then becomes (<em>see <code>climate_analysis-7.py</code></em>):</p>
+<p>Which we insert after the <code>fahr_to_celsius</code> function (since our new function needs to call that one). We can then amend our code to also call that new function and output the result. Our code then becomes:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python">climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
 
 <span class="kw">def</span> fahr_to_celsius(fahr):
@@ -229,7 +209,7 @@ is_sum_equal([<span class="dv">2</span>,<span class="dv">4</span>,<span class="d
 <p>A library is a collection of code (precompiled routines, functions) that a program can use. They are particularly useful for storing frequently used routines because you don’t need to explicitly link them to every program that uses them. Libraries will be automatically looked for routines that are not found elsewhere.</p>
 <p>So we can go one step further to improve the structure of our code. We can separate out the two functions and have them in a separate Python module (or library) which we can use.</p>
 <p>Create a new file called <code>temp_conversion.py</code> and copy and paste those two functions into it, then save it, and remove those functions from the original <code>climate_analysis.py</code> script and save that. We’ll see how to use those library functions shortly. But first, let’s take this opportunity to improve our documentation of those functions!</p>
-<p>The usual way to put documentation in software is to add comments, as we’ve already seen. But when describing functions, there’s a better way. If the first thing in a function is a string that isn’t assigned to a variable, that string is attached to the function as its documentation (<em>see <code>temp_conversion.py</code></em>):</p>
+<p>The usual way to put documentation in software is to add comments, as we’ve already seen. But when describing functions, there’s a better way. If the first thing in a function is a string that isn’t assigned to a variable, that string is attached to the function as its documentation:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="co">&quot;&quot;&quot;A library to perform temperature conversions&quot;&quot;&quot;</span>
 
 <span class="kw">def</span> fahr_to_celsius(fahr):
@@ -285,7 +265,7 @@ FUNCTIONS
         fahr -- the temperature in Fahrenheit
 
 FILE
-    /Users/user/Projects/RSG/Training/2017-08-01-southampton-swc/novice/python/code/temp_conversion.py</code></pre>
+    /Users/user/Projects/RSG/Training/2016-08-31-Southampton/novice/python/code/temp_conversion.py</code></pre>
 <p>Here, note we’ve used the term <code>library</code> in the code documentation. This is a more conventional, general term for a set of routines in any language.</p>
 <p>Similarly, for Docstrings in functions, e.g.:</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="op">&gt;&gt;&gt;</span> <span class="bu">help</span>(temp_conversion.fahr_to_celsius)</code></pre></div>
@@ -300,7 +280,7 @@ fahr_to_celsius(fahr)
     
     Arguments:
     fahr -- the temperature in Fahrenheit</code></pre>
-<p>And then we need to <code>import</code> that function from our module into our script, so we can use it (<em>see <code>climate_analysis-8.py</code></em>).</p>
+<p>And then we need to <code>import</code> that function from our module into our script, so we can use it.</p>
 <div class="sourceCode"><pre class="sourceCode python"><code class="sourceCode python"><span class="im">import</span> temp_conversion
 
 climate_data <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;../data/sc_climate_data_10.csv&#39;</span>, <span class="st">&#39;r&#39;</span>)
@@ -321,21 +301,13 @@ climate_data <span class="op">=</span> <span class="bu">open</span>(<span class=
         <span class="bu">print</span>(<span class="st">&#39;Max temperature in Celsius&#39;</span>, celsius, <span class="st">&#39;Kelvin&#39;</span>, kelvin)</code></pre></div>
 <p>Like when we used the interpreter to ask for help on the <code>fahr_to_celsius()</code> function, we need to prefix the function with its <code>temp_conversion</code> module name.</p>
 <p>Again, the results should be the same as before.</p>
-<section class="challenge panel panel-success">
-<div class="panel-heading">
-<h2 id="readable-code"><span class="glyphicon glyphicon-pencil"></span>Readable Code</h2>
-</div>
-<div class="panel-body">
-<p>Revise a function you wrote for one of the previous exercises to try to make the code more readable. Then, collaborate with one of your neighbors to critique each other’s functions and discuss how your function implementations could be further improved to make them more readable.</p>
-</div>
-</section>
         </div>
       </div>
       </article>
       <div class="footer">
         This work is derived from prior works that are Copyright © <a href="http://software-carpentry.org">Software Carpentry</a>
         <a class="label swc-blue-bg" href="LICENSE.html">License</a>
-        <a class="label swc-blue-bg" href="https://github.com/Southampton-RSG/2017-08-01-southampton-swc">Source</a>
+        <a class="label swc-blue-bg" href="https://github.com/Southampton-RSG/2016-08-31-Southampton">Source</a>
       </div>
     </div>
     <!-- Javascript placed at the end of the document so the pages load faster -->

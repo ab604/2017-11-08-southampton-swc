@@ -28,7 +28,7 @@ others (as well as ourselves, when we might come back to it at a later date).
 
 We first need to be able to read in our data from the `sc_climate_data_10.csv`
 file, and using a loop, print out each line. Let's write another script
-called `climate_analysis.py`, and enter the following (*see `climate_analysis-1.py`*):
+called `climate_analysis.py`, and enter the following:
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')
@@ -122,7 +122,7 @@ So what's happening here?
 > removes the trailing newline. There are many other String methods which
 > are incredibly useful!
 
-So, let's try that out (*see `climate_analysis-2.py`*):
+So, let's try that out:
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')
@@ -152,15 +152,12 @@ Much better!
 ### Selecting and printing out only part of the data
 
 But we're not being very discriminating with our data, we're just blindly
-printing out everything. Let's assume we need to process the individual column
-that represents the maximum temperature for July, the 4th one, how do we extract
-it from the line of data?
+printing out everything. Since we need to process the individual column
+that represents the maximum temperature for July, the 4th one, how do we extract it from the line of data?
 
-As luck (or more likely, good design) would have it, there's a handy string
-method called `split()` which can separate all the columns into a list.
+As luck (or more likely, good design) would have it, there's a handy string method called `split()` which can separate all the columns into a list.
 
-We've seen how we can trim trailing newlines from strings with `rstrip()` acting
-on a string object. Well, we use `split()` in exactly the same way:
+We've seen how we can trim trailing newlines from strings with `rstrip()` acting on a string object. Well, we use `split()` in exactly the same way:
 
 ~~~ {.python}
     data = line.split(',')
@@ -169,7 +166,7 @@ on a string object. Well, we use `split()` in exactly the same way:
 Although in this case, we're capturing the returned list from `split()` into a 
 variable called `data`. We can access elements in that list as before.
 
-So, let's change our code accordingly (*see `climate_analysis-3.py`*):
+So, let's change our code accordingly:
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')

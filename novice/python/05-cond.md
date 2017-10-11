@@ -126,72 +126,6 @@ In this case,
 > elif 4 < 5:
 >     print('C')
 > ~~~
->
-> > ## Solution {.solution}
-> > C gets printed because the first two conditions, `4 > 5` and `4 == 5`, are not true,
-> > but `4 < 5` is true.
-
-> ## What Is Truth? {.challenge}
->
-> `True` and `False` are special words in Python called `booleans`
-> which represent true and false statements.
-> However, they aren't the only values in Python that are true and false.
-> In fact, *any* value can be used in an `if` or `elif`.
-> After reading and running the code below,
-> explain what the rule is for which values are considered true and which are considered false.
->
-> ~~~ {.python}
-> if '':
->     print('empty string is true')
-> if 'word':
->     print('word is true')
-> if []:
->     print('empty list is true')
-> if [1, 2, 3]:
->     print('non-empty list is true')
-> if 0:
->     print('zero is true')
-> if 1:
->     print('one is true')
-> ~~~
->
-
-## Another type of loop
-
-We've seen how to write loops where perhaps we know how many times we want the loop to 
-execute beforehand, e.g. printing out each character in a string. So we can use
-for loops to execute a fixed operation over a known number of steps.
-
-But what if we want our loop to continue to execute until some other condition is true?
-Perhaps our code runs a simulation that generates a set of results each time through
-the loop, but we're not sure when the results will be what we want, i.e. we don't
-know how many times the loop needs to execute. For these types of cases, we can use a 
-`while` loop, which is similar to a `for` loop but exits the loop when some condition is 
-true.
-
-Consider the following example:
-
-~~~ {.python}
-from random import randint
-number = 0
-while number != 5:
-    number = randint(1, 10)
-    print(number)
-~~~
-
-We use Python's ability to generate a random number here for clarity, but this could 
-instead be calling a function that runs another step in our simulation and returns a
-result.
-
-So in this case, our loop will continue to generate and print out random numbers between 
-and 10 while the generated number is not equal to 5. When the random number generated is 
-5, the loop will exit.
-
-`while` loops are a more general case of loops which are often useful (you can even
-simulate a `for` loop using a `while` loop). But you should preferably use `for` loops 
-as opposed to `while` loops where you can, since they are more specific and it's more
-readable - it's easier to figure out how many times the loop will execute.
-
 
 ## Climate Analysis: adding a condition to avoid printing comments
 
@@ -199,7 +133,7 @@ We're still getting our column header at the top of our output, and perhaps
 we don't want that. We need to able to check whether the line begins with
 a '#' (which denotes a comment line), and if so, avoid printing it out.
 
-So let's use an `if` statement to do that (*see `climate_analysis-4.py`*):
+So let's use an `if` statement to do that:
 
 ~~~ {.python}
 climate_data = open('../data/sc_climate_data_10.csv', 'r')
