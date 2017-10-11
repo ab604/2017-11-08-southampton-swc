@@ -14,7 +14,7 @@ enddate: 2017-11-09    # use YYYY-MM-DD format like 2015-01-02
 instructor: ["Steve Crouch", "John Robinson", "James Graham", "Arshad Emmambux"] # list of names like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
 helper: []     # list of names like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 contact: rsg-info@soton.ac.uk    # contact email address for workshop organizer
-eventbrite:
+eventbrite: 38804908526
 etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
 
 ---
@@ -37,8 +37,8 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   is to help scientists and engineers get more research done in less
   time and with less pain by teaching them basic lab skills for
   scientific computing.  This hands-on workshop will cover basic
-  concepts and tools, including building and designing programs in Python, 
-  managing the development of code with version control in Git, and testing 
+  concepts and tools, including building and designing programs in Python,
+  managing the development of code with version control in Git, and testing
   the correctness of Python code using the Nose unit test framework. Participants will be encouraged to help one another.
 </p>
 <p align="center">
@@ -75,8 +75,6 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a>
   or
   <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>
-  or University's Open Data Service for 
-  <a href="http://data.southampton.ac.uk/room/85-2209.html">Building 85 / Room 2209</a>.
 </p>
 {% endif %}
 
@@ -120,6 +118,7 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   are not using Eventbrite, or leave it in, since it will not be
   displayed if the 'eventbrite' field in the header is not set.
 {% if page.eventbrite %}
+-->
 <iframe
   src="https://www.eventbrite.com/tickets-external?eid={{page.eventbrite}}&ref=etckt"
   frameborder="0"
@@ -128,8 +127,6 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   scrolling="auto">
 </iframe>
 {% endif %}
-
--->
 
 <h2 margin=0px>What should I bring with me?</h2>
 <p>
