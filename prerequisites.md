@@ -58,25 +58,25 @@ To exit nano press CTRL+X (you might be prompted you to save or discard modified
 
 ## Python
 
-We use Python 3.4, because it is generally the most widely used version of Python. We will also use the numpy and matplotlib libraries and the nose unit testing framework. Fortunately, these do not need to be installed separately! The "Python3.4 Anaconda" installation provides everything Python-related you will need for the workshop. To install Anaconda, follow the instructions below.
+We use Python 3, because it is generally the most widely used version of Python. We will also use the numpy and matplotlib libraries and the nose unit testing framework. Fortunately, these do not need to be installed separately! The "Python3.6 Anaconda" installation provides everything Python-related you will need for the workshop. To install Anaconda, follow the instructions below.
 
 #### Windows
 
-Download the [Python3.4 Anaconda installer](https://repo.continuum.io/archive/Anaconda3-2.3.0-Windows-x86_64.exe). Double click the installer and follow the instructions.
+Download the [Python3.6 Anaconda installer](https://repo.continuum.io/archive/Anaconda3-5.0.0-Windows-x86_64.exe). Double click the installer and follow the instructions.
 
 #### Mac OS X
 
-Download the [Python 3.4 Anaconda MAC OS X Graphical installer](https://repo.continuum.io/archive/Anaconda3-2.3.0-MacOSX-x86_64.pkg). Double click the `.pkg` file and follow the instructions.
+Download the [Python 3.6 Anaconda Mac OS X Graphical installer](https://repo.continuum.io/archive/Anaconda3-5.0.0-MacOSX-x86_64.pkg). Double click the `.pkg` file and follow the instructions.
 
 #### Linux
 
-Download the [Python3.4 Anaconda installation script](https://repo.continuum.io/archive/Anaconda3-2.3.0-Linux-x86_64.sh). Install via the terminal like this:
+Download the [Python3.6 Anaconda installation script](https://repo.continuum.io/archive/Anaconda3-5.0.0-Linux-x86_64.sh). Install via the terminal like this:
 
 ~~~{.code}
-bash Anaconda3-2.3.0-Linux-x86_64.sh
+bash Anaconda3-5.0.0-Linux-x86_64.sh
 ~~~
 
-When asked "Do you wish the installer to prepend the Anaconda install location to PATH", answer "yes".
+When asked "Do you wish the installer to prepend the Anaconda install location to PATH", answer "yes". After it's finished, close and reopen your terminal to reload the updated PATH and allow the installed Python to be found.
 
 ## Git
 
@@ -144,7 +144,7 @@ curl -L http://goo.gl/qQ4d5J | python
 Close your existing terminal and reopen it.  **This is important!**
 
 ~~~ {.code}
-curl -L http://goo.gl/qQ4d5J | python3.4
+curl -L http://goo.gl/qQ4d5J | python3
 ~~~
 
 
