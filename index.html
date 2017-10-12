@@ -4,7 +4,7 @@ root: .
 venue: University of Southampton      # brief name of host site
 address: Old Thorns Manor Hotel Gold & Country Estate
 address2: Longmoor Road # street address of home location
-country: United-Kingdom    # country (hyphenated if need be, like 'United-Kingdom')
+country: gb    # country (hyphenated if need be, like 'gb')
 language: en   # language code like 'en' or 'fr'
 latlng: 51.074874, -0.832234    # fractional latitude and longitude like 41.7901128,-87.6007318
 humandate: Nov 8-Nov 9, 2017  # use the format 'Feb 17-18, 2020' (without the quotes)
@@ -13,7 +13,7 @@ startdate: 2017-11-08  # use YYYY-MM-DD format like 2015-01-01
 enddate: 2017-11-09    # use YYYY-MM-DD format like 2015-01-02
 instructor: ["Steve Crouch", "John Robinson", "James Graham", "Arshad Emmambux"] # list of names like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
 helper: []     # list of names like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
-contact: rsg-info@soton.ac.uk    # contact email address for workshop organizer
+contact: [ "rsg-info@soton.ac.uk" ]    # contact email address for workshop organizer
 eventbrite: 38804908526
 etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
 
@@ -95,7 +95,6 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   Display the contact email address set in the header.  If an address
   isn't set in the header, the Software Carpentry admin address is
   used.
--->
 <p>
   <strong>Contact</strong>:
   This workshop is being organised by the <a href='http://www.southampton.ac.uk/'>University of Southampton's</a> <a href='http://rsg.soton.ac.uk/'>Research Software Group</a>
@@ -108,7 +107,31 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   {% endif %}
   for more information.
 </p>
+-->
 
+<!--
+  CONTACT EMAIL ADDRESS
+  Display the contact email address set in the configuration file.
+-->
+<p id="contact">
+  <strong>Contact</strong>:
+  Please email
+  {% if page.contact %}
+    {% for contact in page.contact %}
+      {% if forloop.last and page.contact.size > 1 %}
+        or
+      {% else %}
+        {% unless forloop.first %}
+        ,
+        {% endunless %}
+      {% endif %}
+      <a href='mailto:{{contact}}'>{{contact}}</a>
+    {% endfor %}
+  {% else %}
+    to-be-announced
+  {% endif %}
+  for more information.
+</p>
 <hr/>
 
 <!--
@@ -147,9 +170,8 @@ You must bring your own laptop! Before attending the workshop you need to instal
 
 <h2 margin=0px>Surveys</h2>
 <p>Please be sure to complete these surveys before and after the workshop.</p>
-<p><a href="https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id=2017-08-01-southampton">Pre-workshop Survey</a></p>
-<p><a href="https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id=2017-08-01-southampton">Post-workshop Survey</a></p>
-
+<p><a href="{{ site.swc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
+<p><a href="{{ site.swc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
 
 </hr>
 

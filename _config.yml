@@ -23,3 +23,10 @@ kramdown        :
   entity_output : as_input # &mdash; is output as &mdash;
   smart_quotes  : [39, 39, 34, 34] # decimal for left/right single/double quotes
 exclude         : [tools]
+
+
+# Surveys.
+swc_pre_survey: "https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id="
+swc_post_survey: "https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id="
+dc_pre_survey: "https://www.surveymonkey.com/r/dcpreworkshopassessment?workshop_id="
+dc_post_survey: "https://www.surveymonkey.com/r/dcpostworkshopassessment?workshop_id="
