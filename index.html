@@ -12,9 +12,9 @@ humantime: 9:30 am - 5:00 pm  # use the format '9:00 am - 4:30 pm' (without the 
 startdate: 2017-11-08  # use YYYY-MM-DD format like 2015-01-01
 enddate: 2017-11-09    # use YYYY-MM-DD format like 2015-01-02
 instructor: ["Steve Crouch", "John Robinson", "James Graham", "Arshad Emmambux"] # list of names like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: []     # list of names like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+helper: ["Dan Locke"]     # list of names like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 contact: [ "rsg-info@soton.ac.uk" ]    # contact email address for workshop organizer
-eventbrite: 38804908526
+eventbrite:
 etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
 
 ---
@@ -140,8 +140,8 @@ etherpad: https://public.etherpad-mozilla.org/p/SWC-Soton-Nov2017
   'eventbrite' has been set in the header.  You can delete it if you
   are not using Eventbrite, or leave it in, since it will not be
   displayed if the 'eventbrite' field in the header is not set.
-{% if page.eventbrite %}
 -->
+{% if page.eventbrite %}
 <iframe
   src="https://www.eventbrite.com/tickets-external?eid={{page.eventbrite}}&ref=etckt"
   frameborder="0"
